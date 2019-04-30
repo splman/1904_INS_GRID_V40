@@ -60,6 +60,7 @@ import com.sas.custom.common.grid.GridColumnDefinition;
      public static final String BOOLEAN_COL_NAME = "TEST_BOOLEAN_COL";
 
 
+
      //public static final Long[] LONG_VALUES = {4144141234L, 0L, null, -5L};
 
      public static final List<GridColumnDefinition> TEST_COLUMNS2 = Arrays.asList(
