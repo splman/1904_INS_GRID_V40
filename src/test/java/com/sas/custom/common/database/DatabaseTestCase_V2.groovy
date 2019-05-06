@@ -2,8 +2,8 @@ package com.sas.custom.common.database
 
 import com.sas.analytics.ph.common.RTDMTable
 import com.sas.analytics.ph.common.jaxb.DataTypes
-import com.sas.custom.common.database.decorators.CallableStatementDecorator
-import com.sas.custom.common.database.decorators.PreparedStatementDecorator
+//import com.sas.custom.common.database.decorators.CallableStatementDecorator
+//import com.sas.custom.common.database.decorators.PreparedStatementDecorator
 import com.sas.custom.common.database.insert.InsertGridTemplate_V2
 import com.sas.custom.common.grid.AppendColumn
 //import com.sas.custom.common.grid.GridColumnDefinition
@@ -34,7 +34,7 @@ import com.sas.custom.common.grid.GridColumnDefinition;
 
 
 
- class DatabaseTestCase_V2 extends GroovyTestCase implements PreparedStatementCreator {
+ class DatabaseTestCase_V2 extends GroovyTestCase  {
 
     private DataSourceFactory.DataSourceType dataSourceType;
     private boolean autoCommit;
@@ -115,6 +115,16 @@ import com.sas.custom.common.grid.GridColumnDefinition;
 //
         // cleanUp(dbCon)
          //cleanUp()
+
+         //Map<String, DataSource> mapJdbc = DataSourceFactory.getMapJDBC(DataSourceFactory.DataSourceType.SQLServer, true, "DCMS");
+         //BPSelectTest selTst = new BPSelectTest();
+
+         Map<String, DataSource> mapJdbc2 = DataSourceFactory.getMapJDBC(DataSourceFactory.DataSourceType.SQLServer, false, "DCMS");
+         InsertGridTemplate_V2 insertGridTemplate2 = new InsertGridTemplate_V2(TABLE_NAME, null)
+         insertGridTemplate2.setMapJDBC(mapJdbc2);
+
+         insertGridTemplate2.run();
+
      }
 
 
@@ -124,22 +134,22 @@ import com.sas.custom.common.grid.GridColumnDefinition;
         return mapJdbc;
     }
 
-    public PreparedStatement createStatement(String statementStr) {
-        try {
-            return new PreparedStatementDecorator(getConnection().prepareStatement(statementStr), statementStr);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @Override
-    CallableStatement createCallStatement(String statementStr) {
-        try {
-            return new CallableStatementDecorator(getConnection().prepareCall(statementStr), statementStr);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
+//    public PreparedStatement createStatement(String statementStr) {
+//        try {
+//            return new PreparedStatementDecorator(getConnection().prepareStatement(statementStr), statementStr);
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
+//
+//    @Override
+//    CallableStatement createCallStatement(String statementStr) {
+//        try {
+//            return new CallableStatementDecorator(getConnection().prepareCall(statementStr), statementStr);
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 
     private Connection connection;
 

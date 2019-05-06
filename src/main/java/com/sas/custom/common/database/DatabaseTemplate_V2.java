@@ -12,11 +12,11 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.*;
 
-public  class DatabaseTemplate_V2 implements PreparedStatementCreator, Runnable {
+public  class DatabaseTemplate_V2 implements  Runnable {
     private static final Logger logger = Logger.getLogger(DatabaseTemplate_V2.class);
 
     private Connection connection;
-    //private DataSource dataSource;
+    private DataSource dataSource;
 
     private Long errorCode = 0L;
     private Long potentialErrorCode;
@@ -48,7 +48,7 @@ public  class DatabaseTemplate_V2 implements PreparedStatementCreator, Runnable 
 //            throw new RuntimeException(e);
 //        }
 //    }
-    @Override
+    //@Override
     public CallableStatement createCallStatement(String statementStr) {
         try {
             return  getConnection().prepareCall(statementStr);
@@ -57,9 +57,9 @@ public  class DatabaseTemplate_V2 implements PreparedStatementCreator, Runnable 
         }
     }
 
-//    public void setMapJDBC(Map<String, DataSource> input) {
-//        dataSource = input.get("GeneralIO_Activity_Resource");
-//    }
+    public void setMapJDBC(Map<String, DataSource> input) {
+        dataSource = input.get("GeneralIO_Activity_Resource");
+    }
 
 
 
@@ -126,6 +126,7 @@ public  class DatabaseTemplate_V2 implements PreparedStatementCreator, Runnable 
     @Override
     public void run() {
         try {
+            connection = getConnection(dataSource);
             execute();
             if(connection != null)
                 connection.commit();

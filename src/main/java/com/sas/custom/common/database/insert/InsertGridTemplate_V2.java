@@ -3,20 +3,22 @@ package com.sas.custom.common.database.insert;
 import com.sas.analytics.ph.common.RTDMTable;
 
 import com.sas.analytics.ph.common.jaxb.DataTypes;
+import java.sql.*;
+import java.util.*;
+import org.apache.log4j.Logger;
+
+// bez import com.sas.custom.common.database.DatabaseTemplate;
+import com.sas.custom.common.database.DatabaseTemplate_V2;
+
 //import com.sas.custom.common.database.DatabaseUtils;
 //import com.sas.custom.common.database.PreparedStatementCreator;
 
 //import com.sas.custom.common.database.decorators.ConnectionDecorator;
 //import com.sas.custom.common.grid.AppendColumn;
 //import com.sas.custom.common.grid.RowFilter;
-import org.apache.log4j.Logger;
-
-import java.sql.*;
-import java.util.*;
 
 
-// bez import com.sas.custom.common.database.DatabaseTemplate;
-import com.sas.custom.common.database.DatabaseTemplate_V2;
+
 
 //public class InsertGridTemplate  {
 public class InsertGridTemplate_V2 extends DatabaseTemplate_V2 {

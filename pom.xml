@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>pl.pkobp.crm.rtmgroovy</groupId>
-    <artifactId>1904_INS_GRID_V20</artifactId>
+    <artifactId>1904_INS_GRID_V40</artifactId>
     <version>1.0-SNAPSHOT</version>
 <packaging>jar</packaging>
 
