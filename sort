@@ -1,0 +1,13 @@
+TreatmentScore Double
+Cap_remaining  num
+Max_delivery_cnt num
+offerValidTo   char
+
+
+
+offerType ( INBOUNT,OUTBOUND )
+
+Presentation_place_cd (ACCOUNT, AFTER-LOGIN, UNDERBALANCE)
+
+PG  = offerId (45 (PG) )
+offerType<>3  =  not missing(Pers1)
